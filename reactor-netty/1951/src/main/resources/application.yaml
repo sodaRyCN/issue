@@ -1,0 +1,22 @@
+server:
+  port: 5530
+  http2:
+    enabled: true
+  ssl:
+    enabled: false
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        # =====================================
+        - id: test
+          uri: http://localhost:8081
+          predicates:
+            - Path=/**
+logging:
+  level:
+    reactor:
+      netty:
+        http:
+          client: debug
